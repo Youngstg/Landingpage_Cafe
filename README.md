@@ -302,7 +302,10 @@ php artisan migrate
 # 11. Create admin user
 php artisan make:filament-user
 
-# 12. Run server
+# 12. Link storage (Wajib untuk gambar menu/promo)
+php artisan storage:link
+
+# 13. Run server
 php artisan serve
 ```
 

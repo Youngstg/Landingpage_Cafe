@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Order extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'order_number',
+        'customer_name',
+        'table_number',
+        'notes',
+        'subtotal',
+        'total',
+        'status',
+        'payment_method',
+        'payment_status',
+        'paid_at'
+    ];
+
+    protected $casts = [
+        'paid_at' => 'datetime',
+        'subtotal' => 'decimal:2',
+        'total' => 'decimal:2',
+    ];
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+}
